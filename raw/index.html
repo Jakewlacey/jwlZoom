@@ -37,9 +37,21 @@
 </div>
 
 
+<div class="magnify">
+	
+	<!-- This is the magnifying glass which will contain the original/large version -->
+	<div class="large"></div>
+	
+	<!-- This is the small image -->
+	<img class="small" src="http://thecodeplayer.com/uploads/media/iphone.jpg" width="200"/>
+	
+</div>
+
+
+
 </body>
 <script src="http://thecodeplayer.com/uploads/js/prefixfree.js" type="text/javascript"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://thecodeplayer.com/uploads/js/jquery-1.7.1.min.js" type="text/javascript"></script>
 <script>
 	$(document).ready(function(){
 
@@ -51,6 +63,7 @@
 		//When the user hovers on the image, the script will first calculate
 		//the native dimensions if they don't exist. Only after the native dimensions
 		//are available, the script will show the zoomed version.
+
 		if(!native_width && !native_height)
 		{
 			//This will create a new image object with the same image as that in .small
@@ -80,13 +93,13 @@
 			//Finally the code to fade out the glass if the mouse is outside the container
 			if(mx < $(this).width() && my < $(this).height() && mx > 0 && my > 0)
 			{
-				$(".large").fadeIn(100);
+				$(this).find(".large").fadeIn(100);
 			}
 			else
 			{
-				$(".large").fadeOut(100);
+				$(this).find(".large").fadeOut(100);
 			}
-			if($(".large").is(":visible"))
+			if($(this).find(".large").is(":visible"))
 			{
 				//The background position of .large will be changed according to the position
 				//of the mouse over the .small image. So we will get the ratio of the pixel
